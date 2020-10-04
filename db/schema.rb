@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_134609) do
+ActiveRecord::Schema.define(version: 2020_10_04_151213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 2020_10_04_134609) do
     t.integer "rate"
     t.datetime "date"
     t.bigint "tours_id", null: false
-    t.bigint "guides_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["guides_id"], name: "index_ratings_on_guides_id"
+    t.bigint "customers_id"
+    t.index ["customers_id"], name: "index_ratings_on_customers_id"
     t.index ["tours_id"], name: "index_ratings_on_tours_id"
   end
 
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 2020_10_04_134609) do
     t.index ["guides_id"], name: "index_tours_on_guides_id"
   end
 
-  add_foreign_key "ratings", "guides", column: "guides_id"
   add_foreign_key "ratings", "tours", column: "tours_id"
   add_foreign_key "tour_paintings", "paintings", column: "paintings_id"
   add_foreign_key "tour_paintings", "tours", column: "tours_id"
