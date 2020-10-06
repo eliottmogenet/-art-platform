@@ -5,7 +5,8 @@
 <% @tours.each do |tour| %>
   <p><%= tour.title %></p>
   <p> <%= tour.description %></p>
-  <img src="./assets/images/cezanne.jpg" alt="">
+  <%= cl_image_tag("cezanne-sainte-victoire_6251210_djxvya",
+      width: 400, height: 300, crop: :fill) %>
   <p> <%= link_to "See more", tour_path(tour) %></p>
 <% end %>
 
