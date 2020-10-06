@@ -1,4 +1,4 @@
 class TourPainting < ApplicationRecord
-  belongs_to :tours
-  belongs_to :paintings
+  belongs_to :tour
+  belongs_to :painting
 end

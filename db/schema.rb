@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_151213) do
+ActiveRecord::Schema.define(version: 2020_10_06_084540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,21 +56,21 @@ ActiveRecord::Schema.define(version: 2020_10_04_151213) do
     t.text "comment"
     t.integer "rate"
     t.datetime "date"
-    t.bigint "tours_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "customers_id"
-    t.index ["customers_id"], name: "index_ratings_on_customers_id"
-    t.index ["tours_id"], name: "index_ratings_on_tours_id"
+    t.bigint "tour_id"
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_ratings_on_customer_id"
+    t.index ["tour_id"], name: "index_ratings_on_tour_id"
   end
 
   create_table "tour_paintings", force: :cascade do |t|
-    t.bigint "tours_id", null: false
-    t.bigint "paintings_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["paintings_id"], name: "index_tour_paintings_on_paintings_id"
-    t.index ["tours_id"], name: "index_tour_paintings_on_tours_id"
+    t.bigint "tour_id"
+    t.bigint "painting_id"
+    t.index ["painting_id"], name: "index_tour_paintings_on_painting_id"
+    t.index ["tour_id"], name: "index_tour_paintings_on_tour_id"
   end
 
   create_table "tours", force: :cascade do |t|
@@ -79,16 +79,12 @@ ActiveRecord::Schema.define(version: 2020_10_04_151213) do
     t.integer "duration"
     t.string "languages"
     t.integer "total_rate"
-    t.bigint "guides_id", null: false
     t.boolean "free", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "date"
-    t.index ["guides_id"], name: "index_tours_on_guides_id"
+    t.bigint "guide_id"
+    t.index ["guide_id"], name: "index_tours_on_guide_id"
   end
 
-  add_foreign_key "ratings", "tours", column: "tours_id"
-  add_foreign_key "tour_paintings", "paintings", column: "paintings_id"
-  add_foreign_key "tour_paintings", "tours", column: "tours_id"
-  add_foreign_key "tours", "guides", column: "guides_id"
 end

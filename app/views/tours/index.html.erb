@@ -1,0 +1,11 @@
+
+
+<h1>This is all the tours </h1>
+
+<% @tours.each do |tour| %>
+  <p><%= tour.title %></p>
+  <p> <%= tour.description %></p>
+  <img src="./assets/images/cezanne.jpg" alt="">
+  <p> <%= link_to "See more", tour_path(tour) %></p>
+<% end %>
+
