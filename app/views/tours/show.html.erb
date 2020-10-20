@@ -1,6 +1,28 @@
 
 
-<h1>This is one tour</h1>
 
-<h2><%= @tour.title %></h2>
-<p><%= @tour.description %></p>
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-9">
+        <h1><%= @tour.title %></h1>
+        <p><%= @tour.description %></p>
+        <p><%= @tour.duration %> mins </p>
+          <img src="https://source.unsplash.com/random" style="height: 500px; width: 100%; object-fit: cover"/>
+    </div>
+    <div class="col col-lg-3">
+      <div class="guide profil">
+        <h3> <%= @tour.user.first_name %> <%= @tour.user.last_name %></h3>
+        <p> <%= @tour.user.description %> </p>
+      </div>
+      <div>
+        <img src="https://source.unsplash.com/random" style="height: 200px; width: 100%; object-fit: cover"/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p> <%= link_to "Sign-out", destroy_user_session_path, method: :delete %></p>
+    </div>
+  </div>
+</div>
+

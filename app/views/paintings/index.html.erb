@@ -1,0 +1,10 @@
+
+<% @paintings.each do |p| %>
+  <div>
+   <p><%= p.title %></p>
+   <p><%= p.artist %></p>
+   <%= cl_image_tag p.photo.key, height: 500, width: 600, crop: :fill %>
+   <%= link_to "select", painting_path(p) %>
+  </div>
+<% end %>
+

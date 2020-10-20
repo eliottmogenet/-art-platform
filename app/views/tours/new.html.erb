@@ -1,0 +1,10 @@
+<h1> create a new tour </h1>
+
+<%= simple_form_for @tour, url: tours_path do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :languages, collection: Tour::LANGUAGE %>
+  <%= f.button :submit, class: "btn-primary" %>
+<% end %>
+
+

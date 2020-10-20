@@ -5,15 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+require "open-uri"
+require "yaml"
+
+
 puts "cleaning database..."
-Guide.delete_all
+User.delete_all
 Painting.delete_all
 Tour.delete_all
 TourPainting.delete_all
 
-
-
-require 'faker'
 
 puts "create 10 fake paintings"
 
@@ -24,14 +27,16 @@ puts "create 10 fake paintings"
     artist: Faker::Artist.name,
     date: Faker::Date.in_date_period(year: 2018, month: 2)
       )
+  painting_photo = URI.open("https://source.unsplash.com/random")
+  painting.photo.attach(io: painting_photo, filename: 'photo_painting.jpg')
   painting.save!
 
   p painting
 
-  guide = Guide.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Quote.yoda, email: Faker::Internet.email, password: Faker::Number.number(digits: 10))
-  guide.save!
+  user = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Quote.yoda, email: Faker::Internet.email, password: Faker::Number.number(digits: 10), role: "guide")
+  user.save!
 
-  p guide
+  p user
 
   tour = Tour.new(
         title: Faker::Music::Opera.verdi,
@@ -41,7 +46,7 @@ puts "create 10 fake paintings"
         date: Faker::Date.in_date_period(year: 2018, month: 2),
         languages: Faker::ProgrammingLanguage.name
       )
-  tour.guide = guide
+  tour.user = user
   tour.save
 
 

@@ -1,5 +1,8 @@
 class Tour < ApplicationRecord
-  belongs_to :guide
+
+  LANGUAGE = ['French 🇫🇷','English 🇬🇧', 'Spanish 🇪🇸']
+
+  belongs_to :user
   has_many :tour_paintings
   has_many :ratings
   has_many :paintings, through: :tour_paintings

@@ -2,11 +2,46 @@
 
 <h1>This is all the tours </h1>
 
-<% @tours.each do |tour| %>
-  <p><%= tour.title %></p>
-  <p> <%= tour.description %></p>
-  <%= cl_image_tag("cezanne-sainte-victoire_6251210_djxvya",
-      width: 400, height: 300, crop: :fill) %>
-  <p> <%= link_to "See more", tour_path(tour) %></p>
-<% end %>
+<div class="main-container">
+  <div class="container">
+    <div class="row lg-10">
+      <div class="card bg-dark text-white">
+        <img class="card-img" src="https://source.unsplash.com/random" alt="Card image" style="height: 100%; width: 100%; object-fit: contain"/>
+        <div class="card-img-overlay">
+          <h5> <%= @tours.first.title %></h5>
+          <p> <%= @tours.first.description %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row lg-10">
+      <div class="cards">
+            <% @tours.each do |tour| %>
+            <div class="recommendations" style="background-image: url('https://source.unsplash.com/random');"/>
+                <div class="description">
+                  <p><%= tour.title %></p>
+                  <p> <%= tour.description %></p>
+                  <p> <%= link_to "See more", tour_path(tour) %></p>
+                </div>
+            </div>
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
