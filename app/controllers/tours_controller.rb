@@ -8,6 +8,8 @@ class ToursController < ApplicationController
   def show
     @tour = Tour.find(params[:id])
     @user = current_user
+
+    @first_painting = @tour.tour_paintings.first.painting
   end
 
   def edit
@@ -37,6 +39,6 @@ class ToursController < ApplicationController
 
 private
   def params_tour
-    params.require(:tour).permit(:title, :description, :languages, :paintings)
+    params.require(:tour).permit(:title, :description, :languages, :paintings, :tour_paintings, :video)
   end
 end
