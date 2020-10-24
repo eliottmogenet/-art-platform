@@ -17,13 +17,15 @@
     <div class="row lg-10">
       <div class="cards">
             <% @tours.each do |tour| %>
-            <div class="recommendations" style="background-image: url('https://source.unsplash.com/random');"/>
-                <div class="description">
-                  <p><%= tour.title %></p>
-                  <p> <%= tour.description %></p>
-                  <p> <%= link_to "See more", tour_path(tour) %></p>
+              <% if tour.published? %>
+                <div class="recommendations" style="background-image: url('https://source.unsplash.com/random');"/>
+                    <div class="description">
+                      <p><%= tour.title %></p>
+                      <p> <%= tour.description %></p>
+                      <p> <%= link_to "See more", tour_path(tour) %></p>
+                    </div>
                 </div>
-            </div>
+              <% end %>
             <% end %>
       </div>
     </div>

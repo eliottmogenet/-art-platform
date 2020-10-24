@@ -43,6 +43,13 @@ class ToursController < ApplicationController
     end
   end
 
+  def published
+    @tour = Tour.find(params[:id])
+    @tour.published = true
+    @tour.save
+    redirect_to dashboards_path
+  end
+
 private
   def params_tour
     params.require(:tour).permit(:title, :description, :languages, :painting_id, :tour_painting_id, :photo, :video)

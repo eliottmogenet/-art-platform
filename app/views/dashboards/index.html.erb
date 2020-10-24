@@ -1,0 +1,10 @@
+
+
+<% @tours.each do |tour| %>
+  <div>
+    <h2>  <%= tour.title %></h2>
+    <%= link_to "Modifier", tour_path(tour) %>
+  </div>
+<% end  %>
+
+<!-- cover + description + published or not ? -->
