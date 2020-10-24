@@ -1,3 +1,36 @@
 
 
 
+<%= simple_form_for @tour_painting, url: tours_path do |f| %>
+  <div class="img">
+    <%= f.association :painting %>
+    </div>
+    <%= f.input :video, as: :file %>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Ajouter à ma visite" %>
+      </div>
+    <% end %>
+
+<%= link_to "back to paintings", paintings_path %>
+
+<style>
+
+  .image-select {
+    display: inline-grid;
+    margin: 2px;
+  }
+
+  .image-select img {
+    height: 250px;
+    width: 300px;
+    opacity: 50%;
+  }
+
+  .image-select img:hover {
+    opacity: 100%;
+  }
+
+
+
+</style>

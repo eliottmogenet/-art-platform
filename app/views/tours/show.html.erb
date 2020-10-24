@@ -7,15 +7,14 @@
         <h1><%= @tour.title %></h1>
         <p><%= @tour.description %></p>
         <p><%= @tour.duration %> mins </p>
-        <%= cl_image_tag @tour.tour_paintings.first.video.key, height: 150, width: 200 %>
+          <%= cl_video_tag(@tour.video.key, :width => 600, :height => 500, :crop => :crop,
+          :loop => false, :autoplay => true, :poster => false, :controls => true,
+          :fallback_content => "Your browser does not support HTML5 video tags"  ) %>
 
-        <div id="carouselExampleControls" class="carousel slide" data-interval="false">
+<div id="carouselExampleControls" class="carousel slide" data-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active" >
               <%= cl_image_tag @first_painting.photo.key, height: 500, width: 855, crop: :fill %>
-              <div>
-                #video
-              </div>
             </div>
 
           <% @tour.paintings.drop(1).each do |painting| %>

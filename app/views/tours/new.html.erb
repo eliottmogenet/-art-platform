@@ -4,6 +4,7 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :languages, collection: Tour::LANGUAGE %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit, class: "btn-primary" %>
 <% end %>
 

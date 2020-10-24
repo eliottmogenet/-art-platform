@@ -1,13 +1,11 @@
 
 
+
   <div>
     <%= cl_image_tag @painting.photo.key, height: 500, width: 600, crop: :fill %>
-    <%= simple_form_for @painting, url: painting_path do |f| %>
-    <%= f.input :video, as: :file %>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Ajouter à ma visite" %>
-      </div>
-    <% end %>
   </div>
+
+<%= link_to "Ajouter à ma visite", paintings_path %>
+
+
 

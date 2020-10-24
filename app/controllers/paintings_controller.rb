@@ -2,21 +2,20 @@ class PaintingsController < ApplicationController
 
   def index
   @paintings = Painting.all
+  @user = current_user
+  @tour = @user.tours.last
 end
 
   def show
     @painting = Painting.find(params[:id])
-    @tour = Tour.last
+
+    @user = current_user
+    @tour = @user.tours.last
 
     @tour_painting = TourPainting.new
     @tour_painting.painting = @painting
-    @user = current_user
-    @tour_painting.tour = @user.tours.last
+    @tour_painting.tour = @tour
 
     @tour_painting.save!
+    end
   end
-
-  def update
-    redirect_to paintings_path
-  end
-end

@@ -13,9 +13,15 @@ class ToursController < ApplicationController
   end
 
   def edit
+    @tour = Tour.find(params[:id])
   end
 
   def update
+    @tour = Tour.find(params[:id])
+    @tour.update(params_tour)
+
+    # no need for app/views/restaurants/update.html.erb
+    redirect_to tour_path(@tour)
   end
 
   def destroy
@@ -39,6 +45,6 @@ class ToursController < ApplicationController
 
 private
   def params_tour
-    params.require(:tour).permit(:title, :description, :languages, :paintings, :tour_paintings, :video)
+    params.require(:tour).permit(:title, :description, :languages, :painting_id, :tour_painting_id, :photo, :video)
   end
 end

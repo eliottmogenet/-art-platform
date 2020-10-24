@@ -1,2 +1,11 @@
+<%= simple_form_for @tour, url: tour_path(@tour) do |f| %>
+    <%= f.input :video, as: :file %>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Ajouter la vidéo de ma visite" %>
+      </div>
+    <% end %>
+
+<%= link_to "back to paintings", paintings_path %>
 
 
